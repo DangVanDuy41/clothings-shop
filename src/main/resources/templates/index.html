@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/Css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <div class="header__nav d-flex align-items-center">
+            <div class="container">
+                <nav class="header__nav  d-flex justify-content-between">
+                    <ul class="header__nav-list  align-items-center m-0  d-flex list-unstyled">
+                        <li class="header__nav-item">
+                            <a href=""
+                               class="header__nav-link text-decoration-none header__nav-link-dangky  text-white position-relative ">
+                                Đăng ký
+                            </a>
+                        </li>
+                        <li class="header__nav-item">
+                            <div sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/FormUser/formdangnhap}"
+                                   class="header__nav-link text-white text-decoration-none ">
+                                    Đăng Nhập
+                                </a>
+                            </div>
+                            <div sec:authorize="isAuthenticated()">
+                                <a th:href="@{/logout}" class="header__nav-link text-white text-decoration-none ">
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="header__nav-list  m-0 align-items-center d-flex list-unstyled">
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link text-decoration-none text-white text-black ">
+                                Giỏ hàng
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                        </li>
+
+                        <li sec:authorize="isAuthenticated()"
+                            class="header__nav-item  header__nav-item-user d-flex justify-content-center">
+                            <img class="header__user-image " th:src="@{'/image/avatarUser/'+${userAuthAvatar}}">
+                            <div style="margin-left:8px" class="header__nav-username text-white"
+                                 th:text="${userAuthFullName}"></div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="header__nav-white">
+            <ul class="nav-white-list d-flex justify-content-center list-unstyled m-0">
+                <li class="nav-white-list-item">
+                    <a href="" class="nav-white-list-link">TRANG CHỦ</a>
+                </li>
+                <li class="nav-white-list-item">
+                    <a href="" class="nav-white-list-link">GIỚI THIỆU</a>
+                </li>
+                <li class="nav-white-list-item">
+                    <a href="" class="nav-white-list-link">TIN TỨC</a>
+                </li>
+                <li class="nav-white-list-item">
+                    <a href="" class="nav-white-list-link">LIÊN HỆ</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-white-list-item">
+                    <a th:href="@{/manager/productManager}" class="nav-white-list-link">TASK MANAGER</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="ap__container">
+        <div class="container">
+            <img style="width: 100%;"
+                 src="https://inkythuatso.com/uploads/images/2022/01/banner-quan-ao-inkythuatso-13-10-16-26.jpg" alt="">
+            <div class="new__product ">
+                <div class="new__product-title">
+                    <span>SẢN PHẨM MỚI</span>
+                </div>
+                <div class="new_product-list row">
+                    <div class="new__product-item new__product-item-link-icon   col-2"><a
+                            class="previous-link-newproduct "><i
+                            class="fa-solid fa-chevron-left"></i></a></div>
+                    <div id="product-list" class=" row col-8"></div>
+
+
+                    <div class="new__product-item new__product-item-link-icon   col-2"><a class="next-link-newproduct "><i
+                            class="fa-solid fa-chevron-right"></i></a></div>
+                </div>
+                <div class="catelogy__app catelogy__background">
+                    <div class="new__product-title">
+                        <span>TẤT CẢ SẢN PHẨM</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <nav class="nav__catelogy ">
+                                <h3 class="catelogy__heading">
+                                    <i class=" catelogy__heading-icon fa-solid fa-list"></i>
+                                    Danh mục
+                                </h3>
+                                <ul class="catelogy-list list-unstyled">
+                                    <li class="catelogy-item catelogy-item--active">
+                                        <a href="#" class="catelogy-item__link" data-category-id=0>Tất cả</a>
+                                    </li>
+                                    <li th:each="catelogy : ${catelogyList}"
+                                        class="catelogy-item catelogy-item--active">
+                                        <a href="#" class="catelogy-item__link  "
+                                           th:text="${catelogy.categoryName}"
+                                           th:attr="data-category-id=${catelogy.id}"></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-7">
+                            <div class="home-input"><input id="menu__search" type="text"></div>
+                            <div class="home-filter  d-flex  align-items-center justify-content-center">
+                                <san style="display: block; font-weight: 500;" class="home-filter__label">
+                                    Sắp xếp theo
+                                </san>
+                                <a href="#" class="home-filter__link ">Phổ biến</a>
+                                <a href="#" class="home-filter__link btn text-white bg-black">Mới nhất</a>
+                                <a href="#" class="home-filter__link ">Bán chạy</a>
+                                <div class="select-input  p-2 ">
+                                    <div class="select-input__label">
+                                        <span style="display: block; font-weight: 500;">Giá</span>
+                                        <i style="display: block;" class="fas fa-angle-down"></i>
+                                    </div>
+                                    <ul class="select-input__option text-center list-unstyled bg-white">
+                                        <li class="select-input__list-item  ">
+                                            <a href="" id="thapdencao" class="select-input__link  p-2"> Thấp đến cao</a>
+                                            <a href="" id="caodenthap" class="select-input__link p-2">Cao đến thấp</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="home__product">
+                                <div id="list-product" class="new_product-list  row ">
+                                </div>
+                                <div class="list-product-page">
+                                    <div class="previous-page page "><i class="fa-solid fa-chevron-left"></i></div>
+                                    <div class=" next-page  page"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class=" container">
+            <div class="row  footer__row">
+                <div class="col-md-1 p-4"></div>
+
+                <div class="col-md-4 p-4">
+                    <span class="footer__title" style=" display: block;"> GIỚI THIỆU</span>
+                    <span style="display: block; color:#a4a4a4;">
+                        Chào mừng bạn đến với ngôi nhà Converse! Tại đây, mỗi một dòng chữ, mỗi chi tiết và hình ảnh đều
+                        là
+                        những bằng chứng mang dấu ấn lịch sử Converse 100 năm, và đang không ngừng phát triển lớn mạnh.
+                    </span>
+                </div>
+                <div class="col-md-4 p-4">
+                    <span class="footer__title" style=" display: block;"> ĐỊA CHỈ</span>
+                    <span style="display: block; color:#a4a4a4;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, minima ut! Ut unde corrupti
+                        voluptates! Quas, dolor
+                    </span>
+                </div>
+                <div class="col-md-3 p-4">
+                    <span class="footer__title" style=" display: block;"> MẠNG XÃ HỘI</span>
+                    <div class="footer__socal">
+                        <a style=" background-color:  #3a589d ;" class="footer__socal-link">
+                            <i style=" color:  #FFF;" class=" footer__socal-fb fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a style=" background-color:  #3b6994;" class="footer__socal-link">
+                            <i style=" color:  #FFF;" class="footer__socal-insta fa-brands fa-instagram"></i>
+                        </a>
+                        <a style=" background-color:  #2478ba;" class="footer__socal-link">
+                            <i style=" color:  #FFF;" class="footer__socal-tw fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/JS/phantrang.js}"></script>
+<script th:src="@{/JS/categogy.js}"></script>
+<script th:src="@{/JS/SearchProduct.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        background-color: #f2f3f5;
+    }
+    .wrapper__form{
+        width: 600px;
+        padding: 90px 75px;
+        background-color: #FFF;
+        border-radius: 30px;
+    }
+    .form__input{
+        border-radius: 15px;
+        outline: none;
+        background-color: #f2f3f5;
+        padding: 10px;
+        border: none;
+        outline: none;
+        width:100%;
+        box-sizing: border-box;
+    }
+     .form__input:focus{
+        border: 2px solid black;
+        background-color:#fff;
+    }
+    .form__btn{
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        padding:10px ;
+        background-color: black;
+        color: #FFF;
+        margin-top: 50px;
+    }
+    .form__span-link a{
+        color: black;
+    }
+</style>
+<body>
+<div class="wrapper">
+    <form class="wrapper__form " th:action="@{/login}" method="POST" >
+        <h1 class="d-block text-center  py-3 border-bottom fw-bold">Sign Up</h1>
+
+        <div th:if="${param.error}" class="alert alert-danger mt-4" role="alert">
+           Sai tài khoản hoặc mật khẩu
+        </div>
+        <div class="row my-5 ">
+            <label class=" col-md-3 fw-medium"> Email</label>
+            <div class="col-md-9">
+                <input type="email" name="username" class=" form__input fw-medium fs-6 " placeholder="Eg: JohnDeo@gmail.com" >
+            </div>
+        </div>
+        <div class="row ">
+            <label class="col-form-label col-md-3  fw-medium"> Password</label>
+            <div class="col-md-9">
+                <input type="password" name="password" class=" form__input" >
+            </div>
+        </div>
+        <button type="submit" class="form__btn fw-medium "> Sign Up</button>
+        <div class="form__span-link text-center mt-4">
+            <span > Bạn chưa có tài khoản ? <a class="text-decoration-none fw-medium " th:href="@{/FormUser/formdangky}">Đăng ký</a></span>
+        </div>
+
+    </form>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</body>
+</html>

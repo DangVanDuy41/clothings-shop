@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/Css/mainManager.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="app">
+    <div class="app__header">
+    </div>
+    <div class="app__body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar">
+                    <div class="sidebar__nav">
+                        <ul class="sidebar__nav-list">
+                            <li class="sidebar__nav-item">
+                                <a href="" class="sidebar__nav-item-link">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span>Quản Lý USER</span>
+                                </a>
+                            </li>
+                            <li class="sidebar__nav-list-item">
+                                <a href="" class="sidebar__nav-item-link">
+                                    <i class="fa-brands fa-product-hunt"></i>
+                                    <span>Quản lý Order</span>
+                                </a>
+                            </li>
+                            <li class="sidebar__nav-list-item">
+                                <a  href="" class="sidebar__nav-item-link">
+                                    <i class="fa-brands fa-product-hunt"></i>
+                                    <span>Quản lý Product</span>
+                                </a>
+                            </li>
+                            <li class="sidebar__nav-list-item text-center">
+                                <a th:href="@{/Trangchu}" class="sidebar__nav-item-link">
+                                    <span >Thoát</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div style="background-color: #f5f5f5; height: 100vh;" class = "col-md-10 ">
+                <div class=" container app__content">
+                    <a th:href="@{/manager/newProduct}" class="btn btn-primary mb-4">Thêm sản Phẩm</a>
+                    <div class="row" style="width:100%" >
+                        <div class="app__content-table"  >
+                            <table class="table" >
+                                <thead>
+                                <tr  >
+                                    <th scope="col" >ID</th>
+                                    <th scope="col" >Tên Sản Phẩm</th>
+                                    <th scope="col" >Số Lượng</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Danh Mục</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Chức Năng</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="product : ${listProduct}">
+                                    <th scope="row" th:text="${product.id}"></th>
+                                    <td th:text="${product.name}"></td>
+                                    <td th:text="${product.stockQuantity}"></td>
+                                    <td th:text="${product.formattedPrice}"></td>
+                                    <td th:text="${product.category.categoryName}"></td>
+                                    <td class="table__image"  th:style="'background-image: url(/image/imageProduct/' + ${product.image} + ');'"></td>
+                                    <td ><a th:href="@{'/manager/updateProduct/'+${product.id}}" class=" btn btn-success ">Cập nhật</a> <a th:href="@{'/manager/deleteProduct/'+${product.id}}" class=" btn btn-danger"> Xoá</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+</body>
+</html>
