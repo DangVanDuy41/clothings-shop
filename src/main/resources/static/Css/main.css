@@ -129,7 +129,6 @@
 
 .new__product-item {
     position: relative;
-
     transition: transform linear 0.1s;
 
 }
@@ -143,7 +142,6 @@
     display:flex;
     justify-content:center;
     align-items:center;
-
 }
 .new__product-item-link-icon a{
    text-decoration:none;

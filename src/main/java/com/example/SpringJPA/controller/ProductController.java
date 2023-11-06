@@ -30,9 +30,8 @@ public class ProductController {
         Product product = new Product();
         product.setId(productRequest.getId());
         product.setName(productRequest.getName());
-        Integer integerObject = Integer.valueOf(productRequest.getPrice());
-        int intValue = integerObject.intValue();
-        product.setPrice(intValue);
+
+        product.setPrice(productRequest.getPrice());
         product.setStockQuantity(productRequest.getStockQuantity());
         product.uploadImage(file);
         if (result.hasErrors()) {
@@ -78,4 +77,5 @@ public class ProductController {
         model.addAttribute("titleManager","UPDATE SẢN PHẨM");
         return "AddProduct";
     }
+
 }

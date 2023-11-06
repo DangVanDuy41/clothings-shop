@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/Css/productDetails.css">
+    <link rel="stylesheet" href="/Css/cart.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<div class="header">
+    <div class="header__nav d-flex align-items-center">
+        <div class="container">
+            <nav class="header__nav  d-flex justify-content-between">
+                <ul class="header__nav-list  align-items-center m-0  d-flex list-unstyled">
+                    <li class="header__nav-item">
+                        <a href=""
+                           class="header__nav-link text-decoration-none header__nav-link-dangky  text-white position-relative ">
+                            Đăng ký
+                        </a>
+                    </li>
+                    <li class="header__nav-item">
+                        <div sec:authorize="!isAuthenticated()">
+                            <a th:href="@{/FormUser/formdangnhap}"
+                               class="header__nav-link text-white text-decoration-none ">
+                                Đăng Nhập
+                            </a>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <a th:href="@{/logout}" class="header__nav-link text-white text-decoration-none ">
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="header__nav-list  m-0 align-items-center d-flex list-unstyled">
+                    <li class="header__nav-item cart">
+                        <a href="" class="header__nav-link text-decoration-none text-white text-black ">
+                            Giỏ hàng
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                        <div class="cart__details ">
+                            <div class="myCart">
+                                <div class="cart__image ">
+                                    <div style="background-image: url('https://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/women-onestar-2-600x384.jpg');"
+                                         class="product_image"></div>
+                                </div>
+                                <div class="cart__product">
+                                    <div class="cart__product-title">
+                                        <span>Chuck Taylor Classic</span>
+                                    </div>
+                                    <div class=" total cart__product-price">
+                                        <span class="quatity">2</span>
+                                        <span>x</span>
+                                        <span class="price">1.700.000</span>
+                                    </div>
+                                </div>
+                                <div class="cart__delete">
+                                    <i class="fa-solid fa-delete-left"></i>
+                                </div>
+                            </div>
+                            <div class="myCart">
+                                <div class="cart__image ">
+                                    <div style="background-image: url('https://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/women-onestar-2-600x384.jpg');"
+                                         class="product_image"></div>
+                                </div>
+                                <div class="cart__product">
+                                    <div class="cart__product-title">
+                                        <span>Chuck Taylor Classic</span>
+                                    </div>
+                                    <div class=" total cart__product-price">
+                                        <span class="quatity">2</span>
+                                        <span>x</span>
+                                        <span class="price">1.700.000</span>
+                                    </div>
+                                </div>
+                                <div class="cart__delete">
+                                    <i class="fa-solid fa-delete-left"></i>
+                                </div>
+                            </div>
+                            <div class="total-price">
+                                <span>Tổng phụ: </span>
+                                <span class="price"> 17.000.000</span>
+                            </div>
+                            <div class="  check-cart">
+                                <button class="butt btn-check-cart">XEM GIỎ HÀNG</button>
+                            </div>
+                            <div class=" pay">
+                                <button class="butt btn-pay">THANH TOÁN</button>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()"
+                        class="header__nav-item  header__nav-item-user d-flex justify-content-center">
+                        <img class="header__user-image " th:src="@{'/image/avatarUser/'+${userAuthAvatar}}">
+                        <div style="margin-left:8px" class="header__nav-username text-white"
+                             th:text="${userAuthFullName}"></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="header__nav-white">
+        <ul class="nav-white-list d-flex justify-content-center list-unstyled m-0">
+            <li class="nav-white-list-item">
+                <a th:href="@{/Trangchu}" class="nav-white-list-link">TRANG CHỦ</a>
+            </li>
+            <li class="nav-white-list-item">
+                <a href="" class="nav-white-list-link">GIỚI THIỆU</a>
+            </li>
+            <li class="nav-white-list-item">
+                <a href="" class="nav-white-list-link">TIN TỨC</a>
+            </li>
+            <li class="nav-white-list-item">
+                <a href="" class="nav-white-list-link">LIÊN HỆ</a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-white-list-item">
+                <a th:href="@{/manager/productManager}" class="nav-white-list-link">TASK MANAGER</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="app__content">
+    <div class="container">
+        <div class="row">
+            <div class="col product ">
+                <div class="product__image">
+                    <div th:style="'background-image: url(/image/imageProduct/' + ${product.image} + ');'"></div>
+                </div>
+            </div>
+            <div class="col ">
+                <div class="product__details">
+                    <input type="hidden" id="productId" th:value="${product.id}">
+                    <div class="product__details-title">
+                        <span th:text="${product.name}"></span>
+                    </div>
+                    <div class="product__details-price">
+                        <span th:text="${product.formattedPrice}"></span>
+                    </div>
+
+                    <div class="stock-buy">
+                        <div class="stock">
+                            <button class="stock-btn reduce">-</button>
+                            <input class="stock-input" value="1" type="text">
+                            <button class=" stock-btn increase">+</button>
+                        </div>
+                        <div class="addProduct  ">
+                            <button  class="buy">THÊM VÀO GIỎ</button>
+                        </div>
+                    </div>
+                    <div class="payment">
+                        <div style="margin-top:60px;" class="row">
+
+                            <div class="col-md-6">
+                                <span class="payment-title">Tính phí ship tự động</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-ghn.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-ghtk.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-ninja-van.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-shipchung.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-viettle-post.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-vn-post.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="payment-title">Thanh toán</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-acb.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-techcombank.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-vib.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-vcb.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-paypal.jpg" alt="">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img style="width:100%" src="https://mauweb.monamedia.net/converse/wp-content/uploads/2018/10/logo-mastercard.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="new__product-title">
+                <span>SẢN PHẨM TƯƠNG TỰ</span>
+            </div>
+            <div class="new_product-list row">
+                <div class=" col-2"></div>
+                <div id="product-list" class=" row col-8"></div>
+                <div class=" col-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class=" container">
+        <div class="row  footer__row">
+            <div class="col-md-1 p-4"></div>
+            <div class="col-md-4 p-4">
+                <span class="footer__title" style=" display: block;"> GIỚI THIỆU</span>
+                <span style="display: block; color:#a4a4a4;">
+                        Chào mừng bạn đến với ngôi nhà Converse! Tại đây, mỗi một dòng chữ, mỗi chi tiết và hình ảnh đều
+                        là
+                        những bằng chứng mang dấu ấn lịch sử Converse 100 năm, và đang không ngừng phát triển lớn mạnh.
+                    </span>
+            </div>
+            <div class="col-md-4 p-4">
+                <span class="footer__title" style=" display: block;"> ĐỊA CHỈ</span>
+                <span style="display: block; color:#a4a4a4;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, minima ut! Ut unde corrupti
+                        voluptates! Quas, dolor
+                    </span>
+            </div>
+            <div class="col-md-3 p-4">
+                <span class="footer__title" style=" display: block;"> MẠNG XÃ HỘI</span>
+                <div class="footer__socal">
+                    <a style=" background-color:  #3a589d ;" class="footer__socal-link">
+                        <i style=" color:  #FFF;" class=" footer__socal-fb fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a style=" background-color:  #3b6994;" class="footer__socal-link">
+                        <i style=" color:  #FFF;" class="footer__socal-insta fa-brands fa-instagram"></i>
+                    </a>
+                    <a style=" background-color:  #2478ba;" class="footer__socal-link">
+                        <i style=" color:  #FFF;" class="footer__socal-tw fa-brands fa-twitter"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/JS/productDetails.js}"></script>
+</body>
+</html>

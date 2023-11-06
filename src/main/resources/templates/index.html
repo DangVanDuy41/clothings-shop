@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 
 <head>
@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="/Css/main.css">
+    <link rel="stylesheet" href="/Css/cart.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -41,11 +42,61 @@
                         </li>
                     </ul>
                     <ul class="header__nav-list  m-0 align-items-center d-flex list-unstyled">
-                        <li class="header__nav-item">
+                        <li class="header__nav-item cart">
                             <a href="" class="header__nav-link text-decoration-none text-white text-black ">
                                 Giỏ hàng
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </a>
+                            <div class="cart__details">
+                                <div class="myCart">
+                                    <div class="cart__image ">
+                                        <div style="background-image: url('https://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/women-onestar-2-600x384.jpg');"
+                                             class="product_image"></div>
+                                    </div>
+                                    <div class="cart__product">
+                                        <div class="cart__product-title">
+                                            <span>Chuck Taylor Classic</span>
+                                        </div>
+                                        <div class=" total cart__product-price">
+                                            <span class="quatity">2</span>
+                                            <span>x</span>
+                                            <span class="price">1.700.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="cart__delete">
+                                        <i class="fa-solid fa-delete-left"></i>
+                                    </div>
+                                </div>
+                                <div class="myCart">
+                                    <div class="cart__image ">
+                                        <div style="background-image: url('https://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/women-onestar-2-600x384.jpg');"
+                                             class="product_image"></div>
+                                    </div>
+                                    <div class="cart__product">
+                                        <div class="cart__product-title">
+                                            <span>Chuck Taylor Classic</span>
+                                        </div>
+                                        <div class=" total cart__product-price">
+                                            <span class="quatity">2</span>
+                                            <span>x</span>
+                                            <span class="price">1.700.000</span>
+                                        </div>
+                                    </div>
+                                    <div class="cart__delete">
+                                        <i class="fa-solid fa-delete-left"></i>
+                                    </div>
+                                </div>
+                                <div class="total-price">
+                                    <span>Tổng phụ: </span>
+                                    <span class="price"> 17.000.000</span>
+                                </div>
+                                <div class="  check-cart">
+                                    <button class="butt btn-check-cart">XEM GIỎ HÀNG</button>
+                                </div>
+                                <div class=" pay">
+                                    <button class="butt btn-pay">THANH TOÁN</button>
+                                </div>
+                            </div>
                         </li>
 
                         <li sec:authorize="isAuthenticated()"
@@ -83,16 +134,15 @@
             <img style="width: 100%;"
                  src="https://inkythuatso.com/uploads/images/2022/01/banner-quan-ao-inkythuatso-13-10-16-26.jpg" alt="">
             <div class="new__product ">
+
                 <div class="new__product-title">
                     <span>SẢN PHẨM MỚI</span>
                 </div>
                 <div class="new_product-list row">
-                    <div class="new__product-item new__product-item-link-icon   col-2"><a
+                    <div class="new__product-item new__product-item-link-icon col-2"><a
                             class="previous-link-newproduct "><i
                             class="fa-solid fa-chevron-left"></i></a></div>
                     <div id="product-list" class=" row col-8"></div>
-
-
                     <div class="new__product-item new__product-item-link-icon   col-2"><a class="next-link-newproduct "><i
                             class="fa-solid fa-chevron-right"></i></a></div>
                 </div>
@@ -162,7 +212,6 @@
         <div class=" container">
             <div class="row  footer__row">
                 <div class="col-md-1 p-4"></div>
-
                 <div class="col-md-4 p-4">
                     <span class="footer__title" style=" display: block;"> GIỚI THIỆU</span>
                     <span style="display: block; color:#a4a4a4;">

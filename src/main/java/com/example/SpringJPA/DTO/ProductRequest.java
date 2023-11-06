@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class ProductRequest {
-
     private Integer id;
     @NotBlank(message = "Tên không được bỏ trống !!")
     private String name;

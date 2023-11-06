@@ -21,12 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails admin = User.withUsername("admin").password(passwordEncoder().encode("123")).roles("ADMIN").build();
-//        UserDetails user = User.withUsername("user").password(passwordEncoder().encode("123")).roles("USER").build();
-//        return new InMemoryUserDetailsManager(admin, user);
-//    }
+
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -46,7 +41,8 @@ public class SecurityConfig {
                         .requestMatchers("/manager/**").hasRole("ADMIN")
                         .requestMatchers("/FormUser/**","/Trangchu/**").permitAll()
                         .requestMatchers("/Css/**","/image/**","/JS/**").permitAll()
-
+                        .requestMatchers("/ProductDetails/**").permitAll()
+                        .requestMatchers("/CartItem/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

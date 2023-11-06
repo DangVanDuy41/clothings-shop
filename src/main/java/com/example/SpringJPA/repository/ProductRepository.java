@@ -13,6 +13,6 @@ import java.util.Set;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Integer> {
-
+    Page<Product> findByCategory(Pageable pageable, Category category );
 
 }

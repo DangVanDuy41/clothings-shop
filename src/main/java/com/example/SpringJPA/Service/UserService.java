@@ -1,6 +1,7 @@
 package com.example.SpringJPA.Service;
 
 import com.example.SpringJPA.DTO.UserRequest;
+import com.example.SpringJPA.entity.Product;
 import com.example.SpringJPA.entity.User;
 import com.example.SpringJPA.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,6 @@ public class UserService {
     public void deleUser(User user) {
         userRepository.delete(user);
     }
+
+
 }

@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,7 +37,7 @@ public class User {
     private String avatar;
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    private Set<CartItem> cartItemSet = new HashSet<>();
+    private List<CartItem> cartItemSet = new ArrayList<>();
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<OrderUser> orderUserSet = new HashSet<>();

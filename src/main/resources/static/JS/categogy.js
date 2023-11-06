@@ -129,7 +129,7 @@
                                                      productList.empty();
                                                      $.each(data, function(index, product) {
                                                          productList.append("<div  class='item-product  new__product-item  col-3'>" +
-                                                             "<a class='new__product-item-link' href=''>" +
+                                                              "<a class='new__product-item-link' href='/ProductDetails/" + product.id + "'>" +
                                                              "<div class='new__product-item-link-image' style='background-image: url(/image/imageProduct/" + product.image + ");'></div>" +
                                                              "<span class='home-product-item__name home-product-item__name-product'>" + product.name + "</span>" +
                                                              "<span class='home-product-item__price'>" + product.formattedPrice + "</span>" +
