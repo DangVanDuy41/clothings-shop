@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Service
 public class CartItemService {
     @Autowired
@@ -29,5 +31,10 @@ public class CartItemService {
     public CartItem findByUserAndProduct(Product product, User user){
         return cartItemRepository.findByProductAndUser(product,user);
     }
-
+    public List<CartItem> cartItems(User user){
+        return cartItemRepository.findByUser(user);
+    }
+    public List<Object[]> productInCart(int id){
+        return cartItemRepository.getProductIncart(id);
+    }
 }
