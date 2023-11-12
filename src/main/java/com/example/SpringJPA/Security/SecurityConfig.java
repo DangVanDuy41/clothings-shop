@@ -39,10 +39,12 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/manager/**").hasRole("ADMIN")
+
                         .requestMatchers("/FormUser/**","/Trangchu/**").permitAll()
                         .requestMatchers("/Css/**","/image/**","/JS/**").permitAll()
                         .requestMatchers("/ProductDetails/**").permitAll()
                         .requestMatchers("/CartItem/**").permitAll()
+                        .requestMatchers("/CartItem/myCart").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

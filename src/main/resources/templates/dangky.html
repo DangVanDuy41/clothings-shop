@@ -60,13 +60,14 @@
 <body>
 <div class="wrapper">
     <form class="wrapper__form " th:action="@{/FormUser/registerUser}" th:object="${userRequest}" method="POST" enctype="multipart/form-data">
-        <h1 class="d-block text-center m-0 pb-4 mb-4 border-bottom fw-bold">Sign In</h1>
+        <h1 class="d-block text-center m-0 pb-4 mb-4 border-bottom fw-bold" th:text="${title}"></h1>
         <div th:if="${ messageRegister != null && !messageRegister }" class="alert alert-danger mb-4  text-center" role="alert">
             Đăng ký không thành công !
         </div><div th:if="${ messageRegister != null && messageRegister }" class="alert alert-success mb-4   text-center" role="alert">
             Đăng ký  thành công !
     </div>
         <div class="row  ">
+            <input type="hidden" th:field="*{id}">
             <label class=" col-md-3 fw-medium"> Email</label>
             <div class="col-md-9">
                 <input type="text" th:field="*{email}" class=" form__input fw-medium fs-6 "

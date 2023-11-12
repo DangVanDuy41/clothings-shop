@@ -23,9 +23,6 @@
                                      listProductsThapdencao(category);
                                 }
 
-
-
-
               })
               $("#caodenthap").click(function(e){
                         e.preventDefault();
@@ -41,7 +38,7 @@
                  $.ajax({
                     type: "GET",
                     url: "/Trangchu/category/" + categoryId,
-                    success: function(data) {
+                    success: function(data){
                           render(data);
                     },
                     error: function(err) {

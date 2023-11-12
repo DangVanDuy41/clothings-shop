@@ -14,8 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 @Data
 public class UserRequest {
-//    @NotNull(message = "ID khong duoc bo trong !")
-//    private Integer id;
+    @NotNull(message = "ID khong duoc bo trong !")
+    private Integer id;
     @Email(message = "Đây không phải là email !")
     @NotBlank(message = "Email không được bỏ trống !")
     private String email;
@@ -28,4 +28,5 @@ public class UserRequest {
     private MultipartFile file;
     @NotBlank(message = "Mật khẩu không được bỏ trống")
     private String password;
+
 }

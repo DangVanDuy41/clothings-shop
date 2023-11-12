@@ -22,7 +22,7 @@
                 <nav class="header__nav  d-flex justify-content-between">
                     <ul class="header__nav-list  align-items-center m-0  d-flex list-unstyled">
                         <li class="header__nav-item">
-                            <a href=""
+                            <a th:href="@{/FormUser/formdangky}"
                                class="header__nav-link text-decoration-none header__nav-link-dangky  text-white position-relative ">
                                 Đăng ký
                             </a>
@@ -66,9 +66,11 @@
 
                         <li sec:authorize="isAuthenticated()"
                             class="header__nav-item  header__nav-item-user d-flex justify-content-center">
+                            <a style="display:block;text-decoration:none" class=" d-flex justify-content-center align-items-center" th:href="@{/FormUser/formupdate}">
                             <img class="header__user-image " th:src="@{'/image/avatarUser/'+${userAuthAvatar}}">
                             <div style="margin-left:8px" class="header__nav-username text-white"
                                  th:text="${userAuthFullName}"></div>
+                            </a>
                         </li>
                     </ul>
                 </nav>

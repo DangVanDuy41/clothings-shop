@@ -353,3 +353,9 @@
     margin:20px;
     cursor:pointer;
 }
+.cart__product-price{
+     margin-left:5px;
+ }
+ .cart__delete{
+    cursor:pointer
+ }

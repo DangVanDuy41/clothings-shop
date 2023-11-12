@@ -9,6 +9,7 @@ import com.example.SpringJPA.entity.CartItem;
 import com.example.SpringJPA.entity.Product;
 import com.example.SpringJPA.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -78,11 +79,13 @@ public class CartItemAPI {
                     product.updateFormattedPrice();
                     Integer quantity = (Integer) obj[4];
                     String nameProduct = (String) obj[1];
-                    Integer price = (Integer) obj[2];
+
                     String image = (String ) obj[3];
                     Long subtotal = (Long) obj[5];
-                    CartDTO cartDTO = new CartDTO(idProduct,quantity,nameProduct,product.getFormattedPrice(),image,subtotal);
+                    Integer idCart = (Integer) obj[6];
+                    CartDTO cartDTO = new CartDTO(idProduct,quantity,nameProduct,product.getFormattedPrice(),image,subtotal,idCart);
                     cartDTOS.add(cartDTO);
+                    System.out.println(cartDTO);
                 });
         return cartDTOS ;
     }
@@ -97,7 +100,13 @@ public class CartItemAPI {
 
             DecimalFormat decimalFormat = new DecimalFormat("#,###,###", new DecimalFormatSymbols(Locale.getDefault()));
 
-
         return   decimalFormat.format(total) + " đ";
+    }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id){
+            CartItem cartItem = cartItemService.getCartItemById(id);
+        cartItemService.deleteCartItem(cartItem);
+        return ResponseEntity.ok("Xoa thang cong !");
     }
 }

@@ -102,3 +102,6 @@
 .cart:hover .cart__details{
    display:block;
 }
+.cart__delete{
+    cursor:pointer
+ }

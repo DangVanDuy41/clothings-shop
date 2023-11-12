@@ -13,7 +13,7 @@ import java.util.List;
 public interface CartItemRepository extends JpaRepository<CartItem,Integer> {
         List<CartItem> findByUser(User user);
         CartItem findByProductAndUser(Product product, User user);
-        @Query(value = "SELECT p.id, p.name, p.price, p.image, c.quantity, c. subtotal\n" +
+        @Query(value = "SELECT p.id, p.name, p.price, p.image, c.quantity, c. subtotal, c.id\n" +
                 "FROM User as u\n" +
                 "INNER JOIN cart_item as c\n" +
                 "ON c.user_id = u.id\n" +

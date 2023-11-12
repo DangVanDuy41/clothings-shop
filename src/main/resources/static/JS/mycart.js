@@ -31,7 +31,7 @@
                            <span class="price">${item.price}</span>
                        </div>
                    </div>
-                   <div class="cart__delete">
+                   <div class="cart__delete" onclick="deleteCartItem(${item.idCart})">
                        <i class="fa-solid fa-delete-left"></i>
                    </div>
                </div>
@@ -61,4 +61,17 @@
                       }
                   });
        }
+    function deleteCartItem(idcart) {
+
+        $.ajax({
+            type: "GET",
+            url: "/CartItem/delete/" + idcart,
+            success: function(data) {
+               mycart();
+            },
+            error: function(err) {
+                console.error("Đã xảy ra lỗi: " + err.responseText);
+            }
+        });
+    }
    mycart();

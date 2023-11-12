@@ -54,21 +54,38 @@
       })
 
 
-   $(".buy").click(function() {
-       let quantity = parseInt($(".stock-input").val());
+let isAnimationInProgress = false;
 
-       $.ajax({
-           type: "GET",
-           url: "/CartItem/myCart?id=" + id + "&quantity=" + quantity,
-           success: function(data) {
-                    mycart();
-           },
-           error: function(err) {
-               console.error("Đã xảy ra lỗi: " + err.responseText);
-           }
-       });
-   });
+$(".buy").click(function() {
+    if (!isAnimationInProgress) {
+        isAnimationInProgress = true;
 
+        let quantity = parseInt($(".stock-input").val());
+
+        $.ajax({
+            type: "GET",
+            url: "/CartItem/myCart?id=" + id + "&quantity=" + quantity,
+            success: function(data) {
+
+                mycart();
+
+
+                isAnimationInProgress = false;
+            },
+            error: function(err) {
+                console.error("Đã xảy ra lỗi: " + err.responseText);
+
+                isAnimationInProgress = false;
+            }
+        });
+
+
+        $(".cart__details").fadeIn().delay(3000).fadeOut(function() {
+
+                  isAnimationInProgress = false;
+              });
+    }
+});
 
     function mycart(){
              $.ajax({
@@ -103,9 +120,10 @@
                                <span class="price">${item.price}</span>
                            </div>
                        </div>
-                       <div class="cart__delete">
-                           <i class="fa-solid fa-delete-left"></i>
-                       </div>
+                      <div class="cart__delete" onclick="deleteCartItem(${item.idCart})">
+                                            <i class="fa-solid fa-delete-left"></i>
+                                   </div>
+
                    </div>
                `;
            });
@@ -143,15 +161,14 @@
                                                   <span class="price">${data}</span>`;
 
                                                    $(".total-price").html(cartHTML);
-
-
                                     },
                                     error: function(err) {
                                         console.error("Đã xảy ra lỗi: " + err.responseText);
                                     }
                                 });
                      }
-       mycart();
+
+             mycart();
 
 })
 

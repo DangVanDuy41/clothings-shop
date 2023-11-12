@@ -23,7 +23,9 @@ public class CartItemService {
     @Autowired
     private   ProductService productService;
 
-
+        public CartItem getCartItemById(int id){
+           return cartItemRepository.getReferenceById(id);
+        }
     public void SaveCartItem( CartItem cartItem){
        this.cartItemRepository.save(cartItem);
     }
@@ -36,5 +38,9 @@ public class CartItemService {
     }
     public List<Object[]> productInCart(int id){
         return cartItemRepository.getProductIncart(id);
+    }
+
+    public void deleteCartItem( CartItem cartItem){
+        this.cartItemRepository.delete(cartItem);
     }
 }

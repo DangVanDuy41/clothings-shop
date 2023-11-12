@@ -63,9 +63,11 @@
 
                     <li sec:authorize="isAuthenticated()"
                         class="header__nav-item  header__nav-item-user d-flex justify-content-center">
-                        <img class="header__user-image " th:src="@{'/image/avatarUser/'+${userAuthAvatar}}">
-                        <div style="margin-left:8px" class="header__nav-username text-white"
-                             th:text="${userAuthFullName}"></div>
+                        <a style="display:block;text-decoration:none" class=" d-flex justify-content-center align-items-center" th:href="@{/FormUser/formupdate}">
+                            <img class="header__user-image " th:src="@{'/image/avatarUser/'+${userAuthAvatar}}">
+                            <div style="margin-left:8px" class="header__nav-username text-white"
+                                 th:text="${userAuthFullName}"></div>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -227,5 +229,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/JS/productDetails.js}"></script>
+<script th:src="@{/JS/mycart.js}"></script>
 </body>
 </html>

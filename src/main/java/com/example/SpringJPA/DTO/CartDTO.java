@@ -20,6 +20,7 @@ public class CartDTO {
     private Long subtotal;
     private double priceTotal;
     private  String formatPriceTotal;
+    private Integer idCart;
     public CartDTO(Integer productId, Integer quantity, String nameProduct, String price, String image, Long subtotal) {
         this.productId = productId;
         this.quantity = quantity;
@@ -29,14 +30,14 @@ public class CartDTO {
         this.subtotal = subtotal;
     }
 
-    public CartDTO(Integer productId, Integer quantity, String nameProduct, String price, String image, Long subtotal, double priceTotal) {
+    public CartDTO(Integer productId, Integer quantity, String nameProduct, String price, String image, Long subtotal, Integer idCart) {
         this.productId = productId;
         this.quantity = quantity;
         this.nameProduct = nameProduct;
         this.price = price;
         this.image = image;
         this.subtotal = subtotal;
-        this.priceTotal = priceTotal;
+        this.idCart = idCart;
     }
 
     public void updateFormattedPrice() {
