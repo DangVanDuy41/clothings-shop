@@ -58,7 +58,7 @@ public class Product {
         formattedPrice = decimalFormat.format(this.price) + " đ";
     }
     public void uploadImage(MultipartFile file) throws IOException {
-        String path="SpringJPA/src/main/resources/static/image/imageProduct/";
+        String path="src/main/resources/static/image/imageProduct/";
         String originalFilename = file.getOriginalFilename();
         if(!originalFilename.isEmpty()){
             String randomID = UUID.randomUUID().toString();
@@ -73,7 +73,7 @@ public class Product {
         }
     }
     public void deleteImage() {
-        String path = "SpringJPA/src/main/resources/static/image/imageProduct/";
+        String path = "src/main/resources/static/image/imageProduct/";
         if (this.image != null && !this.image.isEmpty()) {
             String filePath = path + this.image;
             File file = new File(filePath);
