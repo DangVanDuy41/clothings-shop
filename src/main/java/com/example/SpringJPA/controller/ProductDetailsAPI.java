@@ -30,7 +30,6 @@ public class ProductDetailsAPI {
         Product product = productService.getProductById(id);
         Category category = product.getCategory();
 
-
         Pageable pageable = PageRequest.of(0,4);
         Page<Product> page = productService.products(category,pageable);
         List<ProductDTO> productList = productService.productDTOList(page.getContent()) ;

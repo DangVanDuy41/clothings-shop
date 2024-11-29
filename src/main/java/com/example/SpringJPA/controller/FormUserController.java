@@ -52,18 +52,11 @@ public class FormUserController {
         model.addAttribute("title","Sign Up");
         return "dangky";
     }
-    @GetMapping("/formupdate")
-    public String update(Model model){
-        User user= getUserAuthentication();
-        model.addAttribute("userRequest",user);
-        model.addAttribute("title","Update User");
 
-        return "dangky";
-    }
     @PostMapping("/registerUser")
     public String register(@Valid @ModelAttribute UserRequest userRequest, BindingResult result, @RequestParam("file") MultipartFile file, Model model) throws IOException {
         User user = new User();
-        user.setId(userRequest.getId());
+
         user.setEmail(userRequest.getEmail());
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         user.setFullName(userRequest.getFullName());
@@ -75,7 +68,7 @@ public class FormUserController {
             model.addAttribute("messageRegister",false);
             return "dangky";
         }
-            userService.saveUser(user);
+        userService.saveUser(user);
         model.addAttribute("messageRegister",true);
             return "dangky";
     }

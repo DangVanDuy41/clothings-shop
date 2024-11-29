@@ -21,6 +21,6 @@ public interface CartItemRepository extends JpaRepository<CartItem,Integer> {
                 "ON p.id = c.product_id\n" +
                 "WHERE u.id = ?1\n"+
                 "order by c.id DESC\n"+
-                "LIMIT 2\n", nativeQuery = true)
+                "LIMIT 5\n", nativeQuery = true)
         List<Object[]> getProductIncart(int id);
 }
